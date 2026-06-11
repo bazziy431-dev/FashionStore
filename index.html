@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Store</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+header{
+    background:#111;
+    color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 10px;
+}
+
+.hero{
+    height:70vh;
+    background:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200') center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:50px;
+    background:rgba(0,0,0,0.5);
+    padding:15px;
+    border-radius:10px;
+}
+
+.products{
+    padding:50px 20px;
+}
+
+.products h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+
+.info{
+    padding:15px;
+}
+
+.price{
+    color:green;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+button{
+    margin-top:10px;
+    width:100%;
+    padding:10px;
+    border:none;
+    background:black;
+    color:white;
+    cursor:pointer;
+    border-radius:8px;
+}
+
+button:hover{
+    background:#333;
+}
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    border-radius:50%;
+    font-size:24px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Fashion Store</div>
+
+    <nav>
+        <a href="#">الرئيسية</a>
+        <a href="#products">المنتجات</a>
+        <a href="#contact">اتصل بنا</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>أحدث صيحات الموضة</h1>
+</section>
+
+<section class="products" id="products">
+    <h2>منتجاتنا</h2>
+
+    <div class="grid" id="productContainer"></div>
+</section>
+
+<footer id="contact">
+    <h3>تواصل معنا</h3>
+    <p>📞 71 000 000</p>
+    <p>📍 لبنان</p>
+</footer>
+
+<a class="whatsapp"
+href="https://wa.me/96171000000"
+target="_blank">💬</a>
+
+<script>
+const products = [
+{
+name:"تيشيرت أبيض",
+price:"10$",
+image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"
+},
+{
+name:"جاكيت أسود",
+price:"25$",
+image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600"
+},
+{
+name:"جينز أزرق",
+price:"20$",
+image:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600"
+},
+{
+name:"هودي رمادي",
+price:"18$",
+image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600"
+}
+];
+
+const container = document.getElementById("productContainer");
+
+products.forEach(product=>{
+container.innerHTML += `
+<div class="card">
+<img src="${product.image}">
+<div class="info">
+<h3>${product.name}</h3>
+<p class="price">${product.price}</p>
+<button onclick="order('${product.name}')">
+اطلب الآن
+</button>
+</div>
+</div>
+`;
+});
+
+function order(product){
+window.open(
+`https://wa.me/96171000000?text=مرحبا أريد طلب ${product}`,
+"_blank"
+);
+}
+</script>
+
+</body>
+</html>
