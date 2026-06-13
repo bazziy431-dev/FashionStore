@@ -159,7 +159,18 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 
 <body>
 
-<header>
+<header
+ <div id="cart" style="background:white;padding:15px;margin:15px;border-radius:10px;">
+  <h2>🛒 سلة المشتريات</h2>
+
+  <div id="cartItems"></div>
+
+  <h3 id="total">المجموع: 0$</h3>
+
+  <button onclick="checkout()">
+    إتمام الطلب
+  </button>
+</div>
 <div class="logo">Bazzi Store</div>
 <nav>
 <a href="#">الرئيسية</a>
@@ -208,7 +219,9 @@ container.innerHTML += `
 <div class="info">
 <h3>${p.name}</h3>
 <p class="price">${p.price}</p>
-<button onclick="openBox()">شراء الآن</button>
+<button onclick="addToCart('${p.name}','${p.price}')">
+إضافة للسلة
+</button>
 </div>
 </div>
 `;
@@ -248,7 +261,43 @@ show(data);
 
 </body>
 </html>
-<script>
+<script
+  let cart = [];
+let total = 0;
+
+function addToCart(name, price){
+
+price = parseFloat(price);
+
+cart.push({
+name:name,
+price:price
+});
+
+total += price;
+
+renderCart();
+}
+
+function renderCart(){
+
+let cartItems = document.getElementById("cartItems");
+
+cartItems.innerHTML = "";
+
+cart.forEach(item=>{
+
+cartItems.innerHTML += `
+<p>
+${item.name} - ${item.price}$
+</p>
+`;
+
+});
+
+document.getElementById("total").innerText =
+"المجموع: " + total + "$";
+}iiiiii
 function openBox(){
 document.getElementById("box").style.display="flex";
 }
@@ -268,5 +317,15 @@ return;
 
 alert("تم الطلب بنجاح 🎉");
 closeBox();
+}
+  function checkout(){
+
+if(cart.length==0){
+alert("السلة فارغة");
+return;
+}
+
+openBox();
+
 }
 </script>
