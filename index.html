@@ -220,7 +220,27 @@ document.getElementById("box").style.display="none";
 }
 
 function confirm(){
-alert("تم الطلب بنجاح 🎉");
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+
+if(name=="" || phone==""){
+alert("عبي البيانات");
+return;
+}
+
+let msg = "طلب جديد:%0A";
+msg += "الاسم: " + name + "%0A";
+msg += "الرقم: " + phone + "%0A";
+msg += "الطلب:%0A";
+
+cart.forEach(p=>{
+msg += "- " + p.name + " (" + p.price + "$)%0A";
+});
+
+msg += "المجموع: " + total + "$";
+
+window.open("https://wa.me/96181812571?text=" + msg, "_blank");
+
 cart=[];
 total=0;
 renderCart();
