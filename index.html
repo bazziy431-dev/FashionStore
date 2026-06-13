@@ -79,53 +79,8 @@ margin-top:30px;
 <body>
 
 <header>
-  <section style="
-margin:15px;
-padding:50px 20px;
-text-align:center;
-border-radius:20px;
-color:white;
-background:linear-gradient(135deg,#111,#444);
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-">
-
-<h1 style="font-size:40px;margin:0;">
-Bazzi Store
-</h1>
 <div class="logo">Bazzi Store</div>
 </header>
-  <section style="
-margin:15px;
-padding:50px 20px;
-text-align:center;
-border-radius:20px;
-color:white;
-background:linear-gradient(135deg,#111,#444);
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-">
-
-<h1 style="font-size:40px;margin:0;">
-Bazzi Store
-</h1>
-
-<p style="margin-top:10px;font-size:18px;">
-أحدث صيحات الموضة بأسعار مميزة 🔥
-</p>
-
-<button style="
-margin-top:15px;
-padding:10px 20px;
-border:none;
-border-radius:10px;
-background:white;
-color:black;
-font-weight:bold;
-cursor:pointer;
-">
-تسوق الآن
-</button>
-
-</section>
 
 <!-- 🛒 CART -->
 <div id="cart">
@@ -154,87 +109,62 @@ background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
 
 <script>
 
-// منتجات
-let data = [];
+/* 🟢 المنتجات */
+let data = [
 {name:"T-Shirt",price:10,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"},
-{name:"Jacket",price:25,img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600"}
+{name:"Jacket",price:25,img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600"},
+{name:"Jeans",price:20,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600"}
 ];
 
-let cart=[];
-let total=0;
-  function show(){
+let cart = [];
+let total = 0;
 
+/* 🟢 عرض المنتجات */
+function show(){
 let container = document.getElementById("products");
 container.innerHTML = "";
 
-// نجيب المنتجات من التخزين
-let data = JSON.parse(localStorage.getItem("products")) || [];
-
-// نعرضهم
 data.forEach(p=>{
 container.innerHTML += `
 <div class="card">
 <img src="${p.img}">
 <h3>${p.name}</h3>
 <p>${p.price}$</p>
-
-<button onclick="addToCart('${p.name}', ${p.price})">
-🛒 أضف للسلة
-</button>
-
-</div>
-`;
-});
-
-}
-
-// عرض المنتجات
-function show(){
-let container=document.getElementById("products");
-container.innerHTML="";
-
-data.forEach(p=>{
-container.innerHTML+=`
-<div class="card">
-<img src="${p.img}">
-<h3>${p.name}</h3>
-<p>${p.price}$</p>
 <button onclick="addToCart('${p.name}',${p.price})">🛒 أضف للسلة</button>
-<button onclick="buyNow('${p.name}',${p.price})">شراء مباشر</button>
 </div>
 `;
 });
 }
 
-// إضافة للسلة
+/* 🟢 إضافة للسلة */
 function addToCart(name,price){
 cart.push({name,price});
-total+=price;
+total += price;
 renderCart();
 }
 
-// عرض السلة
+/* 🟢 عرض السلة */
 function renderCart(){
-let box=document.getElementById("cartItems");
-box.innerHTML="";
+let box = document.getElementById("cartItems");
+box.innerHTML = "";
 
 cart.forEach(p=>{
-box.innerHTML+=`<p>${p.name} - ${p.price}$</p>`;
+box.innerHTML += `<p>${p.name} - ${p.price}$</p>`;
 });
 
-document.getElementById("total").innerText="المجموع: "+total+"$";
+document.getElementById("total").innerText = "المجموع: " + total + "$";
 }
 
-// checkout
+/* 🟢 checkout */
 function checkout(){
-if(cart.length==0){
+if(cart.length == 0){
 alert("السلة فارغة");
 return;
 }
 openBox();
 }
 
-// box
+/* 🟢 box */
 function openBox(){
 document.getElementById("box").style.display="flex";
 }
@@ -243,7 +173,9 @@ function closeBox(){
 document.getElementById("box").style.display="none";
 }
 
+/* 🟢 تأكيد الطلب + واتساب */
 function confirm(){
+
 let name = document.getElementById("name").value;
 let phone = document.getElementById("phone").value;
 
@@ -265,26 +197,23 @@ msg += "المجموع: " + total + "$";
 
 window.open("https://wa.me/96181812571?text=" + msg, "_blank");
 
-cart=[];
-total=0;
+cart = [];
+total = 0;
 renderCart();
 closeBox();
 }
 
-  function buyNow(name, price){
-openBox();
-document.getElementById("name").value = "";
-document.getElementById("phone").value = "";
+/* 🟢 تشغيل */
+show();
 
-alert("سيتم طلب: " + name + " بسعر " + price + "$");
-  }
-  show();
 </script>
-  <footer id="contact" style="text-align:center;padding:30px;background:#111;color:white;margin-top:30px;">
-  <p>📞 961 81 812 571</p>
-  <p>📍 Lebanon</p>
+
+<footer>
+<p>📞 961 81 812 571</p>
+<p>📍 Lebanon</p>
 </footer>
-  <a href="https://wa.me/96181812571" target="_blank"
+
+<a href="https://wa.me/96181812571" target="_blank"
 style="position:fixed;bottom:20px;left:20px;
 background:#25D366;color:white;padding:15px;
 border-radius:50%;font-size:22px;text-decoration:none;">
