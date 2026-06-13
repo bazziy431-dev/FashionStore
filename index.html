@@ -6,38 +6,72 @@
 <title>Bazzi Store</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f6f6f6}
-
-header{
-display:flex;justify-content:space-between;
-align-items:center;padding:15px;
-background:white;position:sticky;top:0;
-box-shadow:0 2px 10px rgba(0,0,0,0.1)
+body{
+margin:0;
+font-family:Arial;
+background:#f4f4f4;
 }
 
-.logo{font-weight:bold;font-size:20px}
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:white;
+position:sticky;
+top:0;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.logo{
+font-weight:bold;
+font-size:22px;
+}
+
+#cart{
+background:white;
+margin:15px;
+padding:15px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
 
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;padding:20px;
+gap:15px;
+padding:20px;
 }
 
 .card{
-background:white;padding:10px;border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1)
+background:white;
+padding:10px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 
-.card img{width:100%;height:200px;object-fit:cover}
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
 
 button{
-background:black;color:white;
-padding:8px;border:none;border-radius:8px;
-cursor:pointer;margin-top:10px
+background:linear-gradient(45deg,#111,#444);
+color:white;
+padding:10px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 
-#cart{
-background:white;margin:15px;padding:15px;border-radius:10px
+footer{
+text-align:center;
+padding:30px;
+background:#111;
+color:white;
+margin-top:30px;
 }
 </style>
 </head>
@@ -45,8 +79,53 @@ background:white;margin:15px;padding:15px;border-radius:10px
 <body>
 
 <header>
+  <section style="
+margin:15px;
+padding:50px 20px;
+text-align:center;
+border-radius:20px;
+color:white;
+background:linear-gradient(135deg,#111,#444);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+">
+
+<h1 style="font-size:40px;margin:0;">
+Bazzi Store
+</h1>
 <div class="logo">Bazzi Store</div>
 </header>
+  <section style="
+margin:15px;
+padding:50px 20px;
+text-align:center;
+border-radius:20px;
+color:white;
+background:linear-gradient(135deg,#111,#444);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+">
+
+<h1 style="font-size:40px;margin:0;">
+Bazzi Store
+</h1>
+
+<p style="margin-top:10px;font-size:18px;">
+أحدث صيحات الموضة بأسعار مميزة 🔥
+</p>
+
+<button style="
+margin-top:15px;
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:white;
+color:black;
+font-weight:bold;
+cursor:pointer;
+">
+تسوق الآن
+</button>
+
+</section>
 
 <!-- 🛒 CART -->
 <div id="cart">
