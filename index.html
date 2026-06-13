@@ -155,13 +155,38 @@ background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
 <script>
 
 // منتجات
-let data = JSON.parse(localStorage.getItem("products")) || [
+let data = [];
 {name:"T-Shirt",price:10,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"},
 {name:"Jacket",price:25,img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600"}
 ];
 
 let cart=[];
 let total=0;
+  function show(){
+
+let container = document.getElementById("products");
+container.innerHTML = "";
+
+// نجيب المنتجات من التخزين
+let data = JSON.parse(localStorage.getItem("products")) || [];
+
+// نعرضهم
+data.forEach(p=>{
+container.innerHTML += `
+<div class="card">
+<img src="${p.img}">
+<h3>${p.name}</h3>
+<p>${p.price}$</p>
+
+<button onclick="addToCart('${p.name}', ${p.price})">
+🛒 أضف للسلة
+</button>
+
+</div>
+`;
+});
+
+}
 
 // عرض المنتجات
 function show(){
@@ -246,16 +271,14 @@ renderCart();
 closeBox();
 }
 
-show();
   function buyNow(name, price){
 openBox();
 document.getElementById("name").value = "";
 document.getElementById("phone").value = "";
 
 alert("سيتم طلب: " + name + " بسعر " + price + "$");
-}
+  }
   show();
-
 </script>
   <footer id="contact" style="text-align:center;padding:30px;background:#111;color:white;margin-top:30px;">
   <p>📞 961 81 812 571</p>
