@@ -175,7 +175,8 @@ container.innerHTML+=`
 <img src="${p.img}">
 <h3>${p.name}</h3>
 <p>${p.price}$</p>
-<button onclick="addToCart('${p.name}',${p.price})">إضافة للسلة</button>
+<button onclick="addToCart('${p.name}',${p.price})">🛒 أضف للسلة</button>
+<button onclick="buyNow('${p.name}',${p.price})">شراء مباشر</button>
 </div>
 `;
 });
@@ -227,6 +228,13 @@ closeBox();
 }
 
 show();
+  function buyNow(name, price){
+openBox();
+document.getElementById("name").value = "";
+document.getElementById("phone").value = "";
+
+alert("سيتم طلب: " + name + " بسعر " + price + "$");
+}
 
 </script>
   <footer id="contact" style="text-align:center;padding:30px;background:#111;color:white;margin-top:30px;">
