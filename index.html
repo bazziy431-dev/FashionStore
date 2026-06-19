@@ -197,6 +197,14 @@ box.innerHTML += `<p>${p.name} - ${p.price}$</p>`;
 
 document.getElementById("total").innerText = "المجموع: " + total + "$";
 }
+  /* 🟢 حذف منتج */
+function deleteProduct(name){
+
+data = data.filter(p => p.name !== name);
+
+show();
+
+}
 
 /* 🟢 checkout */
 function checkout(){
