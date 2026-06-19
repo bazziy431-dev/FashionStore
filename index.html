@@ -155,11 +155,10 @@ background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
 
 /* 🟢 المنتجات */
 let data=[
-{name:"Nike Shirt",price:15,img:"nike.jpg.jpeg"},
-{name:"Jacket",price:25,img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600"},
-{name:"Jeans",price:20,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600"}
+{name:"Nike Shirt",price:15,img:"nike.jpg.jpeg",likes:0},
+{name:"Jacket",price:25,img:"...",likes:0},
+{name:"Jeans",price:20,img:"...",likes:0}
 ];
-
 let cart = [];
 let total = 0;
 
@@ -167,6 +166,11 @@ let total = 0;
 function show(){
 let container = document.getElementById("products");
 container.innerHTML = "";
+  <p>❤️ ${p.likes}</p>
+
+<button onclick="likeProduct('${p.name}')">
+❤️ Like
+</button>
 
 data.forEach(p=>{
 container.innerHTML += `
@@ -203,8 +207,16 @@ function deleteProduct(name){
 data = data.filter(p => p.name !== name);
 
 show();
-
 }
+  function likeProduct(name){
+
+let product = data.find(p => p.name === name);
+
+product.likes++;
+
+show();
+
+  }
 
 /* 🟢 checkout */
 function checkout(){
