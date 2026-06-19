@@ -155,9 +155,9 @@ background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
 
 /* 🟢 المنتجات */
 let data=[
-{name:"Nike Shirt",price:15,img:"nike.jpg.jpeg",likes:0},
-{name:"Jacket",price:25,img:"...",likes:0},
-{name:"Jeans",price:20,img:"...",likes:0}
+{name:"Nike Shirt",price:15,img:"nike.jpg.jpeg"},
+{name:"Jacket",price:25,img:"..."},
+{name:"Jeans",price:20,img:"..."}
 ];
 let cart = [];
 let total = 0;
@@ -202,15 +202,7 @@ data = data.filter(p => p.name !== name);
 
 show();
 }
-  function likeProduct(name){
-
-let product = data.find(p => p.name === name);
-
-product.likes++;
-
-show();
-
-  }
+  
 
 /* 🟢 checkout */
 function checkout(){
