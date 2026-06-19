@@ -185,6 +185,11 @@ container.innerHTML += `
 
 /* 🟢 إضافة للسلة */
 function addToCart(name,price){
+  }
+cart.push({name,price});
+total += price;
+renderCart();
+}
   function deleteProduct(name){
 
 data = data.filter(p => p.name !== name);
@@ -192,10 +197,6 @@ data = data.filter(p => p.name !== name);
 show();
 
   }
-cart.push({name,price});
-total += price;
-renderCart();
-}
 
 /* 🟢 عرض السلة */
 function renderCart(){
