@@ -159,6 +159,14 @@ container.innerHTML += `
 `;
 });
 }
+  function showOrders(){
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+console.log("📦 كل الطلبات:");
+orders.forEach((o, i)=>{
+console.log(i+1, o);
+});
+  }
 
 function addToCart(name,price){
 cart.push({name,price});
@@ -211,6 +219,21 @@ alert("عبي البيانات");
 return;
 }
 
+/* 💾 حفظ الطلب */
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let newOrder = {
+name: name,
+phone: phone,
+items: cart,
+total: total,
+date: new Date().toLocaleString()
+};
+
+orders.push(newOrder);
+localStorage.setItem("orders", JSON.stringify(orders));
+
+/* 📲 واتساب */
 let msg = "طلب جديد:%0A";
 msg += "الاسم: " + name + "%0A";
 msg += "الرقم: " + phone + "%0A";
@@ -223,12 +246,14 @@ msg += "المجموع: " + total + "$";
 
 window.open("https://wa.me/96181812571?text=" + msg, "_blank");
 
+/* 🔄 تصفير */
 cart = [];
 total = 0;
 renderCart();
 closeBox();
-}
 
+alert("تم حفظ الطلب 💾");
+}
 show();
 
 </script>
