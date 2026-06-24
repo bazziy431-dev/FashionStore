@@ -152,6 +152,18 @@ color:white;
 <h3 id="total">المجموع: 0$</h3>
 <button onclick="checkout()">إتمام الطلب</button>
 </div>
+ <input
+id="search"
+placeholder="🔍 ابحث عن منتج..."
+onkeyup="show()"
+style="
+width:90%;
+margin:20px;
+padding:12px;
+border-radius:10px;
+border:1px solid #ccc;
+font-size:16px;
+"> 
 
 <!-- PRODUCTS -->
 <section class="products" id="products"></section>
@@ -180,25 +192,30 @@ let cart = [];
 let total = 0;
 
 function show(){
+
 let container = document.getElementById("products");
 container.innerHTML = "";
 
-data.forEach(p=>{
+let search = document.getElementById("search").value.toLowerCase();
+
+data
+.filter(p => p.name.toLowerCase().includes(search))
+
+data
+.filter(p => p.name.toLowerCase().includes(search))
+.forEach(p=>{
 container.innerHTML += `
+
 <div class="card">
 <img src="${p.img}">
 <h3>${p.name}</h3>
-<p>💲${p.price}</p>
-
-<p>❤️ ${p.likes}</p>
-
-<button onclick="likeProduct('${p.name}')">❤️ Like</button>
+<p>💲${p.price}</p><p>❤️ ${p.likes}</p><button onclick="likeProduct('${p.name}')">❤️ Like</button>
 <button onclick="addToCart('${p.name}',${p.price})">🛒 أضف للسلة</button>
 <button onclick="deleteProduct('${p.name}')">🗑️ حذف</button>
 
 </div>
-`;
-});
+`;});
+
 }
   function showOrders(){
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
