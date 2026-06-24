@@ -13,7 +13,9 @@
 
 <script>
 function login(){
-if(document.getElementById("pass").value == "1234"){
+let pass = document.getElementById("pass").value;
+
+if(pass === "1234"){
 window.location.href = "panel.html";
 }else{
 alert("غلط");
