@@ -182,7 +182,7 @@ background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
 
 <script>
 
-let data=[
+let data = JSON.parse(localStorage.getItem("products")) || [];
 {name:"T-Shirt",price:10,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600",likes:0,rating:0},
 {name:"Jacket",price:25,img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600",likes:0,rating:0},
 {name:"Jeans",price:20,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600",likes:0,rating:0}
