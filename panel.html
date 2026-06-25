@@ -1,74 +1,71 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>Panel</title>
+<title>Admin Panel</title>
 </head>
-<body>
-
-<h2>🛠 إضافة منتج</h2>
-
-<input id="name" placeholder="اسم المنتج">
+<body><h2>🛠 لوحة التحكم</h2><input id="name" placeholder="اسم المنتج">
 <input id="price" placeholder="السعر">
-<input id="img" placeholder="رابط الصورة">
+<input id="img" placeholder="رابط الصورة"><button onclick="addProduct()">إضافة منتج</button>
 
-<button onclick="add()">إضافة</button>
+<div id="products"></div><script>
 
-<h3>المنتجات</h3>
-<div id="list"></div>
-
-<script>
-
-function getData(){
+function getProducts(){
 return JSON.parse(localStorage.getItem("products")) || [];
 }
 
-function save(data){
+function saveProducts(data){
 localStorage.setItem("products",JSON.stringify(data));
 }
 
-function add(){
+function addProduct(){
 
-let data = getData();
+let data = getProducts();
 
 data.push({
 name:document.getElementById("name").value,
-price:document.getElementById("price").value,
-img:document.getElementById("img").value
+price:Number(document.getElementById("price").value),
+img:document.getElementById("img").value,
+likes:0,
+rating:0
 });
 
-save(data);
-show();
-
+saveProducts(data);
+showProducts();
 }
 
-function deleteItem(i){
-let data = getData();
+function deleteProduct(i){
+
+let data = getProducts();
+
 data.splice(i,1);
-save(data);
-show();
+
+saveProducts(data);
+showProducts();
 }
 
-function show(){
+function showProducts(){
 
-let data = getData();
-let box = document.getElementById("list");
-box.innerHTML = "";
+let data = getProducts();
+
+let box = document.getElementById("products");
+box.innerHTML="";
 
 data.forEach((p,i)=>{
+
 box.innerHTML += `
 <div>
-<h4>${p.name}</h4>
-<button onclick="deleteItem(${i})">🗑️ حذف</button>
+<h3>${p.name}</h3>
+<p>${p.price}$</p>
+<button onclick="deleteProduct(${i})">🗑️ حذف</button>
 </div>
+<hr>
 `;
+
 });
 
 }
 
-show();
+showProducts();
 
-</script>
-
-</body>
+</script></body>
 </html>
