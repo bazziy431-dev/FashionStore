@@ -2,11 +2,51 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin Login</title>
+<style>
+body{
+font-family:Arial;
+background:#111;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+.box{
+background:#222;
+padding:20px;
+border-radius:15px;
+width:300px;
+text-align:center;
+}
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+}
+button{
+width:100%;
+margin-top:10px;
+padding:10px;
+border:none;
+border-radius:10px;
+background:#25D366;
+color:white;
+cursor:pointer;
+}
+</style>
 </head>
-<body><h2>🔐 Admin Login</h2><input type="password" id="pass" placeholder="كلمة السر">
-<button onclick="login()">دخول</button><script>
+<body><div class="box">
+<h2>🔐 Admin Login</h2>
+<input type="password" id="pass" placeholder="كلمة السر">
+<button onclick="login()">دخول</button>
+</div><script>
 function login(){
-if(document.getElementById("pass").value === "1234"){
+let pass = document.getElementById("pass").value;
+
+if(pass === "1234"){
 window.location.href="./panel.html";
 }else{
 alert("كلمة السر غلط");
