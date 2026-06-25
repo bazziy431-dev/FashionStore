@@ -1,175 +1,50 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bazzi Store</title>
-
-<style>
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f4f4f4;
-}
+<title>Bazzi Store</title><style>
+body{margin:0;font-family:Arial;background:#f4f4f4}
 
 header{
-background:white;
-padding:15px;
-text-align:center;
-font-size:24px;
-font-weight:bold;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-#cart{
-background:white;
-margin:15px;
-padding:15px;
-border-radius:15px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
+background:white;padding:15px;text-align:center;
+font-size:24px;font-weight:bold;
+box-shadow:0 2px 10px rgba(0,0,0,0.1)
 }
 
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-padding:20px;
+gap:20px;padding:20px
 }
 
 .card{
-background:white;
-border-radius:15px;
-padding:10px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
+background:white;border-radius:15px;
+padding:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)
 }
 
 .card img{
-width:100%;
-height:220px;
-object-fit:cover;
-border-radius:10px;
-transition:0.3s;
-}
-
-.card:hover img{
-transform:scale(1.05);
+width:100%;height:200px;object-fit:cover;border-radius:10px
 }
 
 button{
-background:black;
-color:white;
-padding:10px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-width:100%;
-margin-top:5px;
-}
-
-button:hover{
-opacity:0.9;
-}
-
-footer{
-text-align:center;
-padding:30px;
-background:#111;
-color:white;
-margin-top:30px;
-}
-  .logo{
-font-size:28px;
-font-weight:bold;
-letter-spacing:1px;
-}
-
-.card{
-overflow:hidden;
-}
-
-.card h3{
-margin:10px 0;
-font-size:20px;
-}
-
-.card p{
-color:#444;
+width:100%;margin-top:5px;
+padding:10px;border:none;
+background:black;color:white;border-radius:10px
 }
 
 #cart{
-position:sticky;
-top:10px;
-z-index:10;
+background:white;margin:15px;padding:15px;border-radius:10px
 }
 
-section{
-animation:fadeIn 0.6s ease;
-}
+</style></head><body><header>🛍️ Bazzi Store</header><input id="search" placeholder="🔍 بحث..." onkeyup="show()" 
+style="width:90%;margin:10px;padding:10px">
 
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-</style>
-
-</head>
-
-<body>
-
-<header>
-<div class="logo">
-🔥 Bazzi Store
-</div>
-</header>
-
-<section style="
-margin:20px;
-padding:60px 20px;
-text-align:center;
-border-radius:20px;
-background:linear-gradient(135deg,#111,#444);
-color:white;
-">
-<h1>🔥 Bazzi Store</h1>
-<p>أحدث المنتجات بأفضل الأسعار</p>
-</section>
-
-<!-- CART -->
 <div id="cart">
-<h2>🛒 سلة المشتريات</h2>
+<h3>🛒 السلة</h3>
 <div id="cartItems"></div>
-<h3 id="total">المجموع: 0$</h3>
+<h4 id="total">المجموع: 0$</h4>
 <button onclick="checkout()">إتمام الطلب</button>
-</div>
- <input
-id="search"
-placeholder="🔍 ابحث عن منتج..."
-onkeyup="show()"
-style="
-width:90%;
-margin:20px;
-padding:12px;
-border-radius:10px;
-border:1px solid #ccc;
-font-size:16px;
-"> 
-
-<!-- PRODUCTS -->
-<section class="products" id="products"></section>
-
-<!-- BOX -->
-<div id="box" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+</div><section class="products" id="products"></section><div id="box" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
 background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
 <div style="background:white;padding:20px;width:300px">
 <h3>إتمام الطلب</h3>
@@ -178,10 +53,9 @@ background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
 <button onclick="confirm()">تأكيد</button>
 <button onclick="closeBox()">إلغاء</button>
 </div>
-</div>
+</div><script>
 
-<script>
-
+/* ===== المنتجات ===== */
 let data = JSON.parse(localStorage.getItem("products"));
 
 if(!data){
@@ -190,105 +64,96 @@ data = [
 {name:"Jacket",price:25,img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600",likes:0,rating:0},
 {name:"Jeans",price:20,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600",likes:0,rating:0}
 ];
-
-localStorage.setItem("products", JSON.stringify(data));
+localStorage.setItem("products",JSON.stringify(data));
 }
 
-let cart = [];
-let total = 0;
+/* ===== سلة ===== */
+let cart=[];
+let total=0;
 
+/* ===== عرض ===== */
 function show(){
+let container=document.getElementById("products");
+container.innerHTML="";
 
-let container = document.getElementById("products");
-container.innerHTML = "";
+let search=document.getElementById("search").value.toLowerCase();
 
-let search = document.getElementById("search").value.toLowerCase();
-
-data
-.filter(p => p.name.toLowerCase().includes(search))
+data.filter(p=>p.name.toLowerCase().includes(search))
 .forEach(p=>{
 
-container.innerHTML += `
+container.innerHTML+=`
 <div class="card">
 
 <img src="${p.img}">
-
 <h3>${p.name}</h3>
 
 <p>💲${p.price}</p>
 <p>❤️ ${p.likes}</p>
 <p>⭐ ${p.rating}</p>
 
-<button onclick="rateProduct('${p.name}',1)">⭐</button>
-<button onclick="rateProduct('${p.name}',2)">⭐⭐</button>
-<button onclick="rateProduct('${p.name}',3)">⭐⭐⭐</button>
-<button onclick="rateProduct('${p.name}',4)">⭐⭐⭐⭐</button>
-<button onclick="rateProduct('${p.name}',5)">⭐⭐⭐⭐⭐</button>
+<button onclick="like('${p.name}')">❤️ Like</button>
 
-<button onclick="likeProduct('${p.name}')">❤️ Like</button>
-<button onclick="addToCart('${p.name}',${p.price})">🛒 أضف للسلة</button>
-<button onclick="deleteProduct('${p.name}')">🗑️ حذف</button>
+<button onclick="rate('${p.name}',1)">⭐</button>
+<button onclick="rate('${p.name}',2)">⭐⭐</button>
+<button onclick="rate('${p.name}',3)">⭐⭐⭐</button>
+<button onclick="rate('${p.name}',4)">⭐⭐⭐⭐</button>
+<button onclick="rate('${p.name}',5)">⭐⭐⭐⭐⭐</button>
 
-</div>
-`;
+<button onclick="add('${p.name}',${p.price})">🛒 إضافة</button>
+<button onclick="del('${p.name}')">🗑️ حذف</button>
 
+</div>`;
 });
-
-}
-  function showOrders(){
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
-
-console.log("📦 كل الطلبات:");
-orders.forEach((o, i)=>{
-console.log(i+1, o);
-});
-  }
-
-function addToCart(name,price){
-cart.push({name,price});
-total += price;
-renderCart();
 }
 
-function renderCart(){
-let box = document.getElementById("cartItems");
-box.innerHTML = "";
-
-cart.forEach(p=>{
-box.innerHTML += `<p>${p.name} - ${p.price}$</p>`;
-});
-
-document.getElementById("total").innerText = "المجموع: " + total + "$";
+/* ===== حفظ ===== */
+function save(){
+localStorage.setItem("products",JSON.stringify(data));
 }
 
-function deleteProduct(name){
-data = data.filter(p => p.name !== name);
-show();
-}
-
-function likeProduct(name){
-let p = data.find(x => x.name === name);
+/* ===== like ===== */
+function like(name){
+let p=data.find(x=>x.name===name);
 if(p){
 p.likes++;
-show();
+save();show();
 }
 }
-  function rateProduct(name, stars){
 
-let product = data.find(p => p.name === name);
-
-if(product){
-product.rating = stars;
-show();
+/* ===== rate ===== */
+function rate(name,stars){
+let p=data.find(x=>x.name===name);
+if(p){
+p.rating=stars;
+save();show();
+}
 }
 
-  }
+/* ===== delete ===== */
+function del(name){
+data=data.filter(p=>p.name!==name);
+save();show();
+}
 
+/* ===== cart ===== */
+function add(name,price){
+cart.push({name,price});
+total+=price;
+render();
+}
+
+function render(){
+let box=document.getElementById("cartItems");
+box.innerHTML="";
+cart.forEach(p=>{
+box.innerHTML+=`<p>${p.name} - ${p.price}$</p>`;
+});
+document.getElementById("total").innerText="المجموع: "+total+"$";
+}
+
+/* ===== checkout ===== */
 function checkout(){
-if(cart.length == 0){
-alert("السلة فارغة");
-return;
-}
+if(cart.length==0)return alert("السلة فارغة");
 document.getElementById("box").style.display="flex";
 }
 
@@ -296,58 +161,44 @@ function closeBox(){
 document.getElementById("box").style.display="none";
 }
 
+/* ===== confirm ===== */
 function confirm(){
-let name = document.getElementById("name").value;
-let phone = document.getElementById("phone").value;
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
 
-if(!name || !phone){
-alert("عبي البيانات");
-return;
-}
+if(!name||!phone)return alert("عبي البيانات");
 
-/* 💾 حفظ الطلب */
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
+let orders=JSON.parse(localStorage.getItem("orders"))||[];
 
-let newOrder = {
-name: name,
-phone: phone,
-items: cart,
-total: total,
-date: new Date().toLocaleString()
-};
-
-orders.push(newOrder);
-localStorage.setItem("orders", JSON.stringify(orders));
-
-/* 📲 واتساب */
-let msg = "طلب جديد:%0A";
-msg += "الاسم: " + name + "%0A";
-msg += "الرقم: " + phone + "%0A";
-
-cart.forEach(p=>{
-msg += "- " + p.name + " (" + p.price + "$)%0A";
+orders.push({
+name,phone,items:cart,total,
+date:new Date().toLocaleString()
 });
 
-msg += "المجموع: " + total + "$";
+localStorage.setItem("orders",JSON.stringify(orders));
 
-window.open("https://wa.me/96181812571?text=" + msg, "_blank");
+let msg="طلب جديد:%0A";
+msg+="الاسم: "+name+"%0A";
+msg+="الرقم: "+phone+"%0A";
 
-/* 🔄 تصفير */
-cart = [];
-total = 0;
-renderCart();
+cart.forEach(p=>{
+msg+="- "+p.name+" ("+p.price+"$)%0A";
+});
+
+msg+="المجموع: "+total+"$";
+
+window.open("https://wa.me/96181812571?text="+msg,"_blank");
+
+cart=[];
+total=0;
+render();
 closeBox();
 
-alert("تم حفظ الطلب 💾");
+alert("تم الحفظ 💾");
 }
+
 show();
 
 </script>
-
-<footer>
-<p>📞 961 81 812 571</p>
-<p>📍 Lebanon</p>
-</footer>
-
 </body>
 </html>
