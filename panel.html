@@ -2,24 +2,59 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin Panel</title>
+<style>
+body{
+font-family:Arial;
+background:#f4f4f4;
+margin:0;
+padding:20px;
+}h2{margin-bottom:20px;}
+
+input{
+width:100%;
+padding:10px;
+margin:5px 0;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+button{
+padding:10px;
+border:none;
+border-radius:10px;
+background:black;
+color:white;
+cursor:pointer;
+width:100%;
+margin-top:5px;
+}
+
+.card{
+background:white;
+padding:10px;
+margin-top:10px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+</style>
+
 </head>
 <body><h2>🛠 لوحة التحكم</h2><input id="name" placeholder="اسم المنتج">
 <input id="price" placeholder="السعر">
-<input id="img" placeholder="رابط الصورة"><button onclick="addProduct()">إضافة منتج</button>
+<input id="img" placeholder="رابط الصورة"><button onclick="add()">إضافة منتج</button>
 
-<div id="products"></div><script>
+<div id="list"></div><script>
 
-function getProducts(){
+function get(){
 return JSON.parse(localStorage.getItem("products")) || [];
 }
 
-function saveProducts(data){
+function save(data){
 localStorage.setItem("products",JSON.stringify(data));
 }
 
-function addProduct(){
-
-let data = getProducts();
+function add(){
+let data=get();
 
 data.push({
 name:document.getElementById("name").value,
@@ -29,43 +64,34 @@ likes:0,
 rating:0
 });
 
-saveProducts(data);
-showProducts();
+save(data);
+show();
 }
 
-function deleteProduct(i){
-
-let data = getProducts();
-
+function del(i){
+let data=get();
 data.splice(i,1);
-
-saveProducts(data);
-showProducts();
+save(data);
+show();
 }
 
-function showProducts(){
-
-let data = getProducts();
-
-let box = document.getElementById("products");
+function show(){
+let data=get();
+let box=document.getElementById("list");
 box.innerHTML="";
 
 data.forEach((p,i)=>{
-
-box.innerHTML += `
-<div>
+box.innerHTML+=`
+<div class="card">
 <h3>${p.name}</h3>
 <p>${p.price}$</p>
-<button onclick="deleteProduct(${i})">🗑️ حذف</button>
+<button onclick="del(${i})">🗑️ حذف</button>
 </div>
-<hr>
 `;
-
 });
-
 }
 
-showProducts();
+show();
 
 </script></body>
 </html>
