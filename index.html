@@ -169,8 +169,8 @@ container.innerHTML+=`
 <button onclick="rate('${p.name}',3)">⭐⭐⭐</button>
 <button onclick="rate('${p.name}',4)">⭐⭐⭐⭐</button>
 <button onclick="rate('${p.name}',5)">⭐⭐⭐⭐⭐</button>
-
 <button onclick="add('${p.name}',${p.price})">🛒 إضافة</button>
+<button onclick="buyNow('${p.name}',${p.price})">⚡ اشترِ الآن</button>
 <button onclick="del('${p.name}')">🗑️ حذف</button>
 
 </div>`;
@@ -211,6 +211,19 @@ function add(name,price){
 cart.push({name,price});
 total+=price;
 render();
+}
+  function buyNow(name, price){
+
+cart = [];
+total = 0;
+
+cart.push({name,price});
+total = price;
+
+render();
+
+checkout();
+
 }
 
 function render(){
