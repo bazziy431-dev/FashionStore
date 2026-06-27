@@ -84,6 +84,29 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 ">
+  body.dark{
+background:#111;
+color:white;
+}
+
+body.dark .card{
+background:#1e1e1e;
+color:white;
+}
+
+body.dark #cart{
+background:#1e1e1e;
+color:white;
+}
+
+body.dark header{
+background:#000;
+}
+
+body.dark button{
+background:#333;
+color:white;
+}
 
 <h2>🔥 Bazzi Store</h2>
 
@@ -94,6 +117,16 @@ align-items:center;
 
 <a href="https://wa.me/96181812571" style="color:white;text-decoration:none;margin:10px;">تواصل</a>
 </div>
+ <button onclick="toggleDark()" style="
+background:white;
+color:black;
+padding:8px 12px;
+border-radius:8px;
+border:none;
+cursor:pointer;
+">
+🌙
+ </button> 
 
 </header><input
 id="search"
@@ -301,5 +334,21 @@ margin-top:40px;
 <p>© 2026 Bazzi Store</p>
 
   </footer>
+  function toggleDark(){
+document.body.classList.toggle("dark");
+
+if(document.body.classList.contains("dark")){
+localStorage.setItem("mode","dark");
+}else{
+localStorage.setItem("mode","light");
+}
+}
+
+/* تحميل الوضع عند فتح الموقع */
+window.onload = function(){
+if(localStorage.getItem("mode")==="dark"){
+document.body.classList.add("dark");
+}
+}
 </body>
 </html>
