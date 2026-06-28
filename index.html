@@ -93,6 +93,7 @@ align-items:center;
 
 <a href="https://wa.me/96181812571" style="color:white;text-decoration:none;margin:10px;">تواصل</a>
 </div>
+  <input id="coupon" placeholder="🎁 كود الخصم"><br><br>
 </header><input
 id="search"
 placeholder="🔍 ابحث عن منتج..."
@@ -242,11 +243,28 @@ document.getElementById("box").style.display="flex";
 function closeBox(){
 document.getElementById("box").style.display="none";
 }
+  function applyCoupon(){
+
+let code = document.getElementById("coupon").value.toUpperCase();
+
+if(code === "BAZZI10"){
+return total * 0.10;
+}
+
+if(code === "SALE20"){
+return total * 0.20;
+}
+
+return 0;
+
+  }
 
 /* ===== confirm ===== */
 function confirm(){
 let name=document.getElementById("name").value;
 let phone=document.getElementById("phone").value;
+  let discount = applyCoupon();
+let finalTotal = total - discount;
 
 if(!name||!phone)return alert("عبي البيانات");
 
@@ -267,7 +285,8 @@ cart.forEach(p=>{
 msg+="- "+p.name+" ("+p.price+"$)%0A";
 });
 
-msg+="المجموع: "+total+"$";
+msg+="الخصم: "+discount+"$%0A";
+msg+="المجموع النهائي: "+finalTotal+"$";
 
 window.open("https://wa.me/96181812571?text="+msg,"_blank");
 
