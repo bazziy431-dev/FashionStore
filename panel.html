@@ -40,8 +40,7 @@ box-shadow:0 2px 10px rgba(0,0,0,0.1);
 
 </head>
 <body><h2>🛠 لوحة التحكم</h2><input id="name" placeholder="اسم المنتج">
-<input id="price" placeholder="السعر">
-<input id="img" placeholder="رابط الصورة"><button onclick="add()">إضافة منتج</button>
+<input type="file" id="img" accept="image/*"><input id="price" placeholder="السعر">><button onclick="add()">إضافة منتج</button>
 
 <div id="list"></div><script>
 
@@ -54,18 +53,39 @@ localStorage.setItem("products",JSON.stringify(data));
 }
 
 function add(){
-let data=get();
+
+let file = document.getElementById("img").files[0];
+
+if(!file){
+alert("اختر صورة");
+return;
+}
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+let data = get();
 
 data.push({
-name:document.getElementById("name").value,
-price:Number(document.getElementById("price").value),
-img:document.getElementById("img").value,
+name: document.getElementById("name").value,
+price: Number(document.getElementById("price").value),
+img: e.target.result,
 likes:0,
 rating:0
 });
 
 save(data);
 show();
+
+document.getElementById("name").value="";
+document.getElementById("price").value="";
+document.getElementById("img").value="";
+
+}
+
+reader.readAsDataURL(file);
+
 }
 
 function del(i){
