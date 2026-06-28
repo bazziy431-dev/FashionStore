@@ -299,32 +299,6 @@ alert("تم الحفظ 💾");
 }
 
 show();
-  <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } 
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBaMpVx3X7F1a2wz9atkK1M1HjO11ugEYs",
-  authDomain: "fashion-store-345d9.firebaseapp.com",
-  projectId: "fashion-store-345d9",
-  storageBucket: "fashion-store-345d9.firebasestorage.app",
-  messagingSenderId: "1036764489386",
-  appId: "1:1036764489386:web:9f1a6405a5f84a6f63d2d3"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-window.auth = auth;
-window.db = db;
-window.firebase = {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut
-};
 </script>
   <footer style="
 background:#111;
