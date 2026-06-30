@@ -218,6 +218,43 @@ top:0,
 behavior:"smooth"
 });
 }
+   .slider{
+position:relative;
+height:450px;
+overflow:hidden;
+}
+
+.slider img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:1s;
+}
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.45);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.overlay h1{
+font-size:50px;
+margin:0;
+}
+
+.overlay p{
+font-size:22px;
+margin:15px 0;
+  } 
 </style>
 </head>
 
@@ -234,6 +271,18 @@ behavior:"smooth"
 <a href="https://wa.me/96181812571">💬 واتساب</a>
 </nav>
 </header>
+  <section class="slider">
+
+<img id="slide"
+src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1400">
+
+<div class="overlay">
+<h1>🔥 Bazzi Store</h1>
+<p>أفضل الملابس بأفضل الأسعار</p>
+<a href="#products" class="shop-btn">🛍️ تسوق الآن</a>
+</div>
+
+  </section>
   <section class="hero">
 
 <h1>🔥 Bazzi Store</h1>
@@ -361,6 +410,18 @@ alert("تم الطلب 💾");
 }
 
 show();
+  const images = [
+"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1400",
+"https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1400",
+"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1400"
+];
+
+let current = 0;
+
+setInterval(() => {
+current = (current + 1) % images.length;
+document.getElementById("slide").src = images[current];
+}, 4000);
 
 </script>
   <a href="https://wa.me/96181812571"
