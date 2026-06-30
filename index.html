@@ -255,6 +255,35 @@ margin:0;
 font-size:22px;
 margin:15px 0;
   } 
+    .badge{
+position:absolute;
+top:15px;
+left:15px;
+background:red;
+color:white;
+padding:5px 10px;
+border-radius:20px;
+font-size:14px;
+font-weight:bold;
+}
+
+.card{
+position:relative;
+  }
+    .card{
+animation:fade .5s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
 </style>
 </head>
 
@@ -360,6 +389,7 @@ data.filter(p=>p.name.toLowerCase().includes(search))
 .forEach(p=>{
 container.innerHTML+=`
 <div class="card">
+<span class="badge">🔥 جديد</span>
 <img src="${p.img}">
 <h3>${p.name}</h3>
 <p>$${p.price}</p>
