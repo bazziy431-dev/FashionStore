@@ -113,12 +113,47 @@ transition:.3s;
 background:white;
 transform:scale(1.08);
 }
+  nav{
+display:flex;
+gap:15px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+padding:10px 15px;
+border-radius:25px;
+transition:.3s;
+}
+
+nav a:hover{
+background:#FFD700;
+color:black;
+}
+  #cart{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+  }
 </style>
 </head>
 
 <body>
 
 <header>
+<h2>🔥 Bazzi Store</h2>
+
+<nav>
+<a href="index.html">الرئيسية</a>
+<a href="#products">المنتجات</a>
+<a href="login.html">👤 دخول</a>
+<a href="https://wa.me/96181812571">💬 واتساب</a>
+</nav>
+</header>
   <section class="hero">
 
 <h1>🔥 Bazzi Store</h1>
@@ -130,16 +165,18 @@ transform:scale(1.08);
 </a>
 
   </section>
-<div>
-<a href="index.html">الرئيسية</a>
-<a href="#products">المنتجات</a>
-<a href="login.html">👤 دخول</a>
-</div>
-</header>
 
 <input id="search" placeholder="🔍 بحث..." onkeyup="show()"
-style="width:90%;margin:10px;padding:10px">
-
+style="
+width:90%;
+margin:20px auto;
+display:block;
+padding:15px;
+border-radius:30px;
+border:none;
+font-size:18px;
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+"
 <div id="cart">
 <h3>🛒 السلة</h3>
 <div id="cartItems"></div>
