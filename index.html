@@ -207,17 +207,6 @@ display:none;
 font-size:20px;
 z-index:999;
   }
-  window.onscroll = function(){
-document.getElementById("topBtn").style.display =
-window.scrollY > 300 ? "block" : "none";
-}
-
-function topFunction(){
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-}
    .slider{
 position:relative;
 height:450px;
@@ -312,6 +301,20 @@ src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1400">
 </div>
 
   </section>
+  <section class="best">
+
+<h2>🔥 الأكثر مبيعًا</h2>
+
+<div class="best-box">
+<div>👕 T-Shirt</div>
+<div>👟 Shoes</div>
+<div>⌚ Watch</div>
+<div>👜 Bag</div>
+</div>
+
+</section>
+
+<input id="search" ...>
   <section class="hero">
 
 <h1>🔥 Bazzi Store</h1>
@@ -452,6 +455,48 @@ setInterval(() => {
 current = (current + 1) % images.length;
 document.getElementById("slide").src = images[current];
 }, 4000);
+    window.onscroll = function(){
+document.getElementById("topBtn").style.display =
+window.scrollY > 300 ? "block" : "none";
+}
+
+function topFunction(){
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+}
+  .best{
+padding:40px 20px;
+text-align:center;
+}
+
+.best h2{
+font-size:32px;
+margin-bottom:25px;
+}
+
+.best-box{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+}
+
+.best-box div{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+font-size:22px;
+font-weight:bold;
+transition:.3s;
+cursor:pointer;
+}
+
+.best-box div:hover{
+background:#FFD700;
+transform:translateY(-8px);
+  }
 
 </script>
   <a href="https://wa.me/96181812571"
