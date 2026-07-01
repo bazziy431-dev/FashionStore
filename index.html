@@ -8,11 +8,15 @@
 <style>
 body{margin:0;font-family:Arial;background:#f4f4f4}
 header{
-background:#111;color:white;
+background:#111;
+color:white;
 padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+position:sticky;
+top:0;
+z-index:1000;
 }
 a{color:white;text-decoration:none;margin:10px}
 .products{
@@ -119,12 +123,9 @@ align-items:center;
 flex-wrap:wrap;
 }
 
-nav a{
-color:white;
-text-decoration:none;
-padding:10px 15px;
-border-radius:25px;
-transition:.3s;
+a:hover{
+color:#FFD700;
+transition:0.3s;
 }
 
 nav a:hover{
@@ -304,10 +305,29 @@ cursor:pointer;
 background:#FFD700;
 transform:translateY(-8px);
 }
+  .top-bar{
+background:#FFD700;
+color:#111;
+text-align:center;
+padding:10px;
+font-weight:bold;
+font-size:16px;
+  }
+  body{
+animation:fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
 </style>
 </head>
 
 <body>
+  <div class="top-bar">
+🔥 خصم 30% على جميع المنتجات اليوم فقط!
+  </div>
 
 <header>
   <button onclick="darkMode()">🌙</button>
