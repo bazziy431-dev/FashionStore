@@ -273,6 +273,37 @@ opacity:1;
 transform:translateY(0);
 }
 }
+  .best{
+padding:40px 20px;
+text-align:center;
+}
+
+.best h2{
+font-size:32px;
+margin-bottom:25px;
+}
+
+.best-box{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+}
+
+.best-box div{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+font-size:22px;
+font-weight:bold;
+transition:.3s;
+cursor:pointer;
+}
+
+.best-box div:hover{
+background:#FFD700;
+transform:translateY(-8px);
+}
 </style>
 </head>
 
@@ -466,38 +497,6 @@ top:0,
 behavior:"smooth"
 });
 }
-  .best{
-padding:40px 20px;
-text-align:center;
-}
-
-.best h2{
-font-size:32px;
-margin-bottom:25px;
-}
-
-.best-box{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
-}
-
-.best-box div{
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 10px 20px rgba(0,0,0,.15);
-font-size:22px;
-font-weight:bold;
-transition:.3s;
-cursor:pointer;
-}
-
-.best-box div:hover{
-background:#FFD700;
-transform:translateY(-8px);
-  }
-
 </script>
   <a href="https://wa.me/96181812571"
 target="_blank"
