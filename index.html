@@ -321,6 +321,15 @@ animation:fadeIn 0.6s ease;
 from{opacity:0;}
 to{opacity:1;}
 }
+  .price{
+color:#ff9800;
+font-size:22px;
+font-weight:bold;
+  }
+  #cart{
+position:sticky;
+top:90px;
+  }
 </style>
 </head>
 
@@ -365,7 +374,10 @@ src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1400">
 
 </section>
 
-<input id="search" ...>
+<input id="search"
+placeholder="🔍 ابحث عن منتج..."
+onkeyup="show()"
+style="width:90%;padding:15px;border-radius:30px;border:none;box-shadow:0 5px 15px rgba(0,0,0,.15);margin:20px;">
   <section class="hero">
 
 <h1>🔥 Bazzi Store</h1>
@@ -446,7 +458,7 @@ container.innerHTML+=`
 <span class="badge">🔥 جديد</span>
 <img src="${p.img}">
 <h3>${p.name}</h3>
-<p>$${p.price}</p>
+<p class="price">$${p.price}</p>
 
 <button onclick="add('${p.name}',${p.price})">🛒 إضافة</button>
 </div>`;
@@ -457,6 +469,8 @@ function add(name,price){
 cart.push({name,price});
 total+=price;
 render();
+
+alert("✅ تمت إضافة "+name+" إلى السلة");
 }
 
 function render(){
