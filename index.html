@@ -330,6 +330,28 @@ font-weight:bold;
 position:sticky;
 top:90px;
   }
+  .logo{
+font-size:30px;
+font-weight:bold;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo span{
+color:#FFD700;
+}
+  del{
+color:#999;
+margin-left:10px;
+}
+  footer{
+background:#111;
+color:white;
+text-align:center;
+padding:40px;
+margin-top:40px;
+}
 </style>
 </head>
 
@@ -340,7 +362,9 @@ top:90px;
 
 <header>
   <button onclick="darkMode()">🌙</button>
-<h2>🔥 Bazzi Store</h2>
+<div class="logo">
+🛍️ <span>Bazzi Store</span>
+</div>
 
 <nav>
 <a href="index.html">الرئيسية</a>
@@ -408,11 +432,12 @@ border-radius:30px;
 border:none;
 font-size:18px;
 box-shadow:0 5px 20px rgba(0,0,0,.15);
-"
+<h4 id="total">المجموع: 0$</h4>
+<p id="itemsCount">عدد المنتجات: 0</p>
 <div id="cart">
 <h3>🛒 السلة</h3>
 <div id="cartItems"></div>
-<h4 id="total">0$</h4>
+
 <button onclick="checkout()">إتمام الطلب</button>
 </div>
 
@@ -458,8 +483,10 @@ container.innerHTML+=`
 <span class="badge">🔥 جديد</span>
 <img src="${p.img}">
 <h3>${p.name}</h3>
-<p class="price">$${p.price}</p>
-
+<p>
+<del>$${p.price+10}</del>
+<span class="price">$${p.price}</span>
+</p>
 <button onclick="add('${p.name}',${p.price})">🛒 إضافة</button>
 </div>`;
 });
@@ -468,6 +495,8 @@ container.innerHTML+=`
 function add(name,price){
 cart.push({name,price});
 total+=price;
+  document.getElementById("itemsCount").innerText =
+"عدد المنتجات: " + cart.length;
 render();
 
 alert("✅ تمت إضافة "+name+" إلى السلة");
@@ -549,6 +578,17 @@ box-shadow:0 0 20px rgba(37,211,102,0.6);
 💬
   </a>
   <button id="topBtn" onclick="topFunction()">⬆</button>
+  <footer>
+
+<h2>Bazzi Store</h2>
+
+<p>📞 +961 81 812 571</p>
+
+<p>📍 Lebanon</p>
+
+<p>© 2026 جميع الحقوق محفوظة</p>
+
+</footer>
 
 </body>
 </html>
