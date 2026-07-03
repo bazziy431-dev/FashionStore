@@ -352,6 +352,11 @@ text-align:center;
 padding:40px;
 margin-top:40px;
 }
+  .ship{
+color:green;
+font-size:15px;
+font-weight:bold;
+}
 </style>
 </head>
 
@@ -440,6 +445,11 @@ box-shadow:0 5px 20px rgba(0,0,0,.15);
 
 <button onclick="checkout()">إتمام الطلب</button>
 </div>
+  <h2 style="text-align:center;font-size:35px;">
+🛍️ أحدث المنتجات
+</h2>
+
+<section class="products" id="products"></section>
 
 <section class="products" id="products"></section>
 
@@ -491,6 +501,7 @@ container.innerHTML+=`
 </div>`;
 });
 }
+<p class="ship">🚚 شحن مجاني</p>  
 
 function add(name,price){
 cart.push({name,price});
