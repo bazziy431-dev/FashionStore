@@ -489,15 +489,19 @@ let search=document.getElementById("search").value.toLowerCase();
 
 data.filter(p=>p.name.toLowerCase().includes(search))
 .forEach(p=>{
-container.innerHTML+=
+container.innerHTML += `
 <div class="card">
 <span class="badge">🔥 جديد</span>
+
 <img src="${p.img}">
+
 <h3>${p.name}</h3>
+
 <p>
 <del>$${p.price+10}</del>
 <span class="price">$${p.price}</span>
 </p>
+
 <p class="ship">🚚 شحن مجاني</p>
 
 <div class="stars">
@@ -507,7 +511,9 @@ container.innerHTML+=
 <button onclick="add('${p.name}',${p.price})">
 🛒 إضافة إلى السلة
 </button>
-</div>`;
+
+</div>
+`;
 });
 }
 function add(name,price){
