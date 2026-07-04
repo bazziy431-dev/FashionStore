@@ -489,9 +489,11 @@ let search=document.getElementById("search").value.toLowerCase();
 
 data.filter(p=>p.name.toLowerCase().includes(search))
 .forEach(p=>{
-container.innerHTML+=`
-document.getElementById("productsCount").innerText =
-"عدد المنتجات: " + data.length;
+container.innerHTML+=
+  let count = document.getElementById("productsCount");
+if(count){
+    count.innerText = "عدد المنتجات: " + data.length;
+}
 <div class="card">
 <span class="badge">🔥 جديد</span>
 <img src="${p.img}">
