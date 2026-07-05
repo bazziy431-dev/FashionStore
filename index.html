@@ -372,6 +372,43 @@ margin-top:12px;
 .card{
 cursor:pointer;
 }
+  header{
+background:#111;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 5px 20px rgba(0,0,0,.25);
+}
+
+.logo{
+font-size:32px;
+font-weight:bold;
+}
+
+.logo span{
+color:#FFD700;
+}
+
+nav a{
+padding:10px 15px;
+border-radius:30px;
+transition:.3s;
+}
+
+nav a:hover{
+background:#FFD700;
+color:black;
+}
+
+.darkBtn{
+width:50px;
+height:50px;
+border-radius:50%;
+font-size:22px;
+background:#FFD700;
+color:black;
+}
 </style>
 </head>
 
@@ -381,17 +418,22 @@ cursor:pointer;
   </div>
 
 <header>
-  <button onclick="darkMode()">🌙</button>
+
 <div class="logo">
 🛍️ <span>Bazzi Store</span>
 </div>
 
 <nav>
-<a href="index.html">الرئيسية</a>
-<a href="#products">المنتجات</a>
+<a href="index.html">🏠 الرئيسية</a>
+<a href="#products">🛍️ المنتجات</a>
 <a href="login.html">👤 دخول</a>
 <a href="https://wa.me/96181812571">💬 واتساب</a>
 </nav>
+
+<button onclick="darkMode()" class="darkBtn">
+🌙
+</button>
+
 </header>
   <section class="slider">
 
