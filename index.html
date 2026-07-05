@@ -525,12 +525,32 @@ render();
 
 alert("✅ تمت إضافة "+name+" إلى السلة");
 }
+  function removeItem(index){
+
+total -= cart[index].price;
+
+cart.splice(index,1);
+
+document.getElementById("itemsCount").innerText =
+"عدد المنتجات: " + cart.length;
+
+render();
+
+}
 
 function render(){
 let box=document.getElementById("cartItems");
 box.innerHTML="";
 cart.forEach(p=>{
-box.innerHTML+=`<p>${p.name} - ${p.price}$</p>`;
+box.innerHTML += `
+<p>
+${p.name} - ${p.price}$
+
+<button onclick="removeItem(${cart.indexOf(p)})"
+style="width:auto;padding:6px 12px;margin-right:10px;background:red;color:white;border:none;border-radius:10px;">
+❌
+</button>
+</p>`;
 });
 document.getElementById("total").innerText=total+"$";
 }
