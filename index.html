@@ -409,6 +409,18 @@ font-size:22px;
 background:#FFD700;
 color:black;
 }
+  .card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+.card img{
+transition:.4s;
+}
+
+.card:hover img{
+transform:scale(1.1) rotate(2deg);
+}
 </style>
 </head>
 
@@ -535,7 +547,7 @@ container.innerHTML += `
 <div class="card">
 <span class="badge">🔥 جديد</span>
 
-<img src="${p.img}">
+<img src="${p.img}" onclick="window.open('${p.img}')">
 
 <h3>
 ${p.name}
