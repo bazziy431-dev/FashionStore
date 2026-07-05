@@ -495,7 +495,12 @@ container.innerHTML += `
 
 <img src="${p.img}">
 
-<h3>${p.name}</h3>
+<h3>
+${p.name}
+<span onclick="this.innerHTML='❤️'" style="float:left;cursor:pointer;">
+🤍
+</span>
+</h3>
 
 <p>
 <del>$${p.price+10}</del>
