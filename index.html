@@ -571,7 +571,10 @@ style="width:90%;padding:15px;border-radius:30px;border:none;box-shadow:0 5px 15
 <button onclick="checkout()">إتمام الطلب</button>
 </div> 
   <h2 style="text-align:center;">🛍️ أحدث المنتجات</h2>
-
+  <div id="visitors"
+style="text-align:center;font-size:18px;font-weight:bold;margin:20px;color:#ff9800;">
+👀 يشاهد هذا المتجر الآن: <span id="count">127</span>
+  </div>
 <p id="productsCount"
 style="text-align:center;font-size:18px;color:gray;">
 </p>
@@ -730,6 +733,13 @@ top:0,
 behavior:"smooth"
 });
 }
+  setInterval(() => {
+
+let num = Math.floor(Math.random()*50)+100;
+
+document.getElementById("count").innerText = num;
+
+},5000);
 </script>
   <a href="https://wa.me/96181812571"
 target="_blank"
