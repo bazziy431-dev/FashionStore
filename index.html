@@ -421,6 +421,75 @@ transition:.4s;
 .card:hover img{
 transform:scale(1.1) rotate(2deg);
 }
+  @media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:15px;
+padding:15px;
+}
+
+nav{
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.logo{
+font-size:24px;
+}
+
+.slider{
+height:250px;
+}
+
+.overlay h1{
+font-size:30px;
+}
+
+.overlay p{
+font-size:16px;
+}
+
+.products{
+grid-template-columns:1fr;
+padding:15px;
+}
+
+.card img{
+height:220px;
+}
+
+#cart{
+position:static;
+margin:15px;
+}
+
+  }
+  .card{
+border:1px solid #eee;
+}
+
+.card h3{
+font-size:24px;
+}
+
+.price{
+font-size:26px;
+color:#ff9800;
+}
+
+.badge{
+box-shadow:0 5px 15px rgba(255,0,0,.3);
+}
+
+.card button{
+font-size:17px;
+font-weight:bold;
+}
+
+.card:hover{
+border-color:#FFD700;
+}
 </style>
 </head>
 
