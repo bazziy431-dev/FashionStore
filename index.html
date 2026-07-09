@@ -701,12 +701,29 @@ let orders=JSON.parse(localStorage.getItem("orders"))||[];
 orders.push({name,phone,items:cart,total,date:new Date()});
 localStorage.setItem("orders",JSON.stringify(orders));
 
+let message = `🛍️ طلب جديد من Bazzi Store
+
+👤 الاسم: ${name}
+📞 الرقم: ${phone}
+
+🛒 المنتجات:
+`;
+
+cart.forEach(item=>{
+message += `- ${item.name} ($${item.price})\n`;
+});
+
+message += `\n💰 المجموع: $${total}`;
+
+window.open(
+`https://wa.me/96181812571?text=${encodeURIComponent(message)}`,
+"_blank"
+);
+
 cart=[];
 total=0;
 render();
 closeBox();
-
-alert("تم الطلب 💾");
 }
 
 show();
