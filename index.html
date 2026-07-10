@@ -661,7 +661,7 @@ cart.push({name,price});
 total+=price;
   document.getElementById("itemsCount").innerText =
 "عدد المنتجات: " + cart.length;
-alert("✅ تمت إضافة "+name+" إلى السلة");
+showToast("✅ تمت إضافة " + name + " إلى السلة");
 }
   function removeItem(index){
 
@@ -795,6 +795,18 @@ container.innerHTML += `
 });
 
 }
+  function showToast(text){
+
+const toast = document.getElementById("toast");
+
+toast.innerText = text;
+toast.style.display = "block";
+
+setTimeout(()=>{
+toast.style.display = "none";
+},2000);
+
+}
 </script>
   <a href="https://wa.me/96181812571"
 target="_blank"
@@ -824,6 +836,22 @@ box-shadow:0 0 20px rgba(37,211,102,0.6);
 <p>© 2026 جميع الحقوق محفوظة</p>
 
 </footer>
+  <div id="toast"
+style="
+position:fixed;
+top:20px;
+right:20px;
+background:#28a745;
+color:white;
+padding:15px 25px;
+border-radius:10px;
+font-weight:bold;
+display:none;
+z-index:9999;
+box-shadow:0 5px 15px rgba(0,0,0,.3);
+">
+✅ تمت إضافة المنتج إلى السلة
+</div>
 
 </body>
 </html>
