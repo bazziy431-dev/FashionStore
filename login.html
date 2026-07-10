@@ -52,46 +52,66 @@ color:white;
 <input id="password" type="password" placeholder="Password">
 
 <button onclick="login()">دخول</button>
+
+<button onclick="signup()">
+إنشاء حساب
+</button>
 <button onclick="register()">إنشاء حساب</button>
 
 </div>
 
 <script type="module">
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } 
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+getAuth,
+signInWithEmailAndPassword,
+createUserWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBaMpVx3X7F1a2wz9atkK1M1HjO11ugEYs",
-  authDomain: "fashion-store-345d9.firebaseapp.com",
-  projectId: "fashion-store-345d9",
-  appId: "1:1036764489386:web:9f1a6405a5f84a6f63d2d3"
+apiKey: "AIzaSyBaMpVx3X7F1a2wz9atkK1M1HjO11ugEYs",
+authDomain: "fashion-store-345d9.firebaseapp.com",
+projectId: "fashion-store-345d9",
+appId: "1:1036764489386:web:9f1a6405a5f84a6f63d2d3"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 window.login = function(){
-let email = document.getElementById("email").value;
-let pass = document.getElementById("password").value;
 
-signInWithEmailAndPassword(auth, email, pass)
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+signInWithEmailAndPassword(auth,email,password)
+
 .then(()=>{
-alert("تم تسجيل الدخول");
-window.location.href = "index.html";
+alert("✅ تم تسجيل الدخول");
+window.location="index.html";
 })
-.catch(e=>alert(e.message));
+
+.catch(err=>{
+alert(err.message);
+});
+
 }
 
-window.register = function(){
-let email = document.getElementById("email").value;
-let pass = document.getElementById("password").value;
+window.signup = function(){
 
-createUserWithEmailAndPassword(auth, email, pass)
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+createUserWithEmailAndPassword(auth,email,password)
+
 .then(()=>{
-alert("تم إنشاء حساب");
+alert("✅ تم إنشاء الحساب");
 })
-.catch(e=>alert(e.message));
+
+.catch(err=>{
+alert(err.message);
+});
+
 }
 
 </script>
