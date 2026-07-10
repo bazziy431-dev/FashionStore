@@ -570,6 +570,15 @@ style="width:90%;padding:15px;border-radius:30px;border:none;box-shadow:0 5px 15
 
 <button onclick="checkout()">إتمام الطلب</button>
 </div> 
+  <div style="text-align:center;margin:20px;">
+
+<button onclick="filterProducts('الكل')">الكل</button>
+
+<button onclick="filterProducts('ملابس')">👕 ملابس</button>
+
+<button onclick="filterProducts('بناطيل')">👖 بناطيل</button>
+
+</div>
   <h2 style="text-align:center;">🛍️ أحدث المنتجات</h2>
   <div id="visitors"
 style="text-align:center;font-size:18px;font-weight:bold;margin:20px;color:#ff9800;">
@@ -598,9 +607,9 @@ background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
 let data = JSON.parse(localStorage.getItem("products"));
 if(!data){
 data = [
-{name:"T-Shirt",price:10,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600",likes:0,rating:0},
-{name:"Jacket",price:25,img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600",likes:0,rating:0},
-{name:"Jeans",price:20,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600",likes:0,rating:0}
+{name:"T-Shirt",category:"ملابس",price:10,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600",likes:0,rating:0},
+{name:"Jacket",category:"ملابس",price:25,img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600",likes:0,rating:0},
+{name:"Jeans",category:"بناطيل",price:20,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600",likes:0,rating:0}
 ];
 localStorage.setItem("products",JSON.stringify(data));
 }
@@ -757,6 +766,35 @@ let num = Math.floor(Math.random()*50)+100;
 document.getElementById("count").innerText = num;
 
 },5000);
+  function filterProducts(category){
+
+let container = document.getElementById("products");
+container.innerHTML = "";
+
+let products = category == "الكل"
+? data
+: data.filter(p => p.category == category);
+
+products.forEach(p=>{
+container.innerHTML += `
+<div class="card">
+<span class="badge">🔥 جديد</span>
+<img src="${p.img}">
+<h3>${p.name}</h3>
+
+<p>
+<del>$${p.price+10}</del>
+<span class="price">$${p.price}</span>
+</p>
+
+<button onclick="add('${p.name}',${p.price})">
+🛒 إضافة إلى السلة
+</button>
+
+</div>`;
+});
+
+}
 </script>
   <a href="https://wa.me/96181812571"
 target="_blank"
